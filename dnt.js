@@ -1,15 +1,18 @@
 var iframes = document.getElementsByTagName("iframe");
 
-console.log("blah hmmm");
-[...iframes].forEach(fixIframe);
+[...iframes].forEach(fixelement);
 
+var scripts = document.getElementsByTagName("script");
+[...scripts].forEach(fixelement);
 
-function fixIframe(iframe)
+function fixelement(element)
 {
-	if(iframe.hasAttribute("data-src"))
+	if(element.hasAttribute("data-src"))
 	{
-		iframe.setAttribute("src", iframe.getAttribute("data-src"));
-		var placeholders = iframe.parentElement.getElementsByClassName("onetrust-placeholder");
-		[...placeholders].forEach(placeholder => iframe.parentElement.removeChild(placeholder));
+		element.setAttribute("src", element.getAttribute("data-src"));
+		var placeholders = element.parentElement.getElementsByClassName("onetrust-placeholder");
+		[...placeholders].forEach(placeholder => element.parentElement.removeChild(placeholder));
+		placeholders = element.parentElement.getElementsByClassName("embed_placeholder");
+		[...placeholders].forEach(placeholder => element.parentElement.removeChild(placeholder));
 	}
 }
