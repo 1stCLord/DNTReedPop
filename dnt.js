@@ -5,6 +5,8 @@ var iframes = document.getElementsByTagName("iframe");
 var scripts = document.getElementsByTagName("script");
 [...scripts].forEach(fixelement);
 
+appendYouTubeAPI();
+
 function fixelement(element)
 {
 	if(element.hasAttribute("data-src"))
